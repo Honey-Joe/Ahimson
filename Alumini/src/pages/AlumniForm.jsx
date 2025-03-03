@@ -80,7 +80,9 @@ export default function AlumniForm() {
   };
 
   return (
+    <div className=" flex w-full h-screen justify-center items-center">
     <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
+
       <h2 className="text-xl font-bold mb-4">{pageTitles[page]}</h2>
 
       {/* Page 1: Membership Type */}
@@ -162,6 +164,7 @@ export default function AlumniForm() {
         {page > 0 && <button onClick={() => setPage(page - 1)} className="bg-gray-400 text-white p-2 rounded">Back</button>}
         {page < 5 ? <button onClick={() => setPage(page + 1)} className="bg-blue-600 text-white p-2 rounded">Next</button> : <button onClick={handleSubmit} className="bg-green-600 text-white p-2 rounded">Submit</button>}
       </div>
+    </div>
     </div>
   );
 }
