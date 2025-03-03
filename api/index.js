@@ -7,7 +7,9 @@ dotenv.config();
 connectDB();
 const adminRoutes = require("./routes/adminRoutes"); // Import Admin Routes
 const router = require("./routes/authRoutes");
+const connectCloudinary = require("./config/cloudinary");
 
+connectCloudinary();
 
 const app = express();
 app.use(express.json());
