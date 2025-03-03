@@ -4,20 +4,46 @@ const Admin = require("../models/Admin");
 
 exports.adminLogin = async (req, res) => {
   try {
-    const { username, password } = req.body;
-    const admin = await Admin.findOne({ username });
+    const { email, password } = req.body;
+    const user = await Admin.findOne({ email });
 
-    if (!admin || !(await bcrypt.compare(password, admin.password))) {
-      return res.status(400).json({ message: "Invalid credentials" });
+    if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
+      return res.status(401).json({ error: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-    res.json({ token, admin });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+
+    res.json({ user: { email: user.email, } });
+  } catch (error) {
+    res.status(500).json({ error: "Login failed" });
   }
 };
 
+exports.registerAdmin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Check if the user already exists
+    const existingUser = await Admin.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: "Email already in use" });
+    }
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create an admin user
+    const adminUser = await Admin.create({
+      
+      email,
+      passwordHash: hashedPassword,
+     
+    });
+
+    res.status(201).json({ message: "Admin registered successfully", userId: adminUser._id });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to register admin" });
+  }
+};
 
 
 // ✅ Create an Admin Account (One-time Use)

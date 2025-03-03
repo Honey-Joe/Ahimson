@@ -6,6 +6,7 @@ const connectDB = require("./config/db");
 dotenv.config();
 connectDB();
 const adminRoutes = require("./routes/adminRoutes"); // Import Admin Routes
+const router = require("./routes/authRoutes");
 
 
 const app = express();
@@ -15,7 +16,7 @@ app.use("/uploads", express.static("uploads"));
 
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/alumni", require("./routes/alumniRoutes"));
-app.use("/api/admin", adminRoutes);
+app.use("/api/admin", router);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

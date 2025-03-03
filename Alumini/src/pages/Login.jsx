@@ -1,15 +1,19 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const navigate = useNavigate()
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", formData);
+      const res = await axios.post("http://localhost:5000/api/admin/login", formData);
       alert("Login successful!");
+      navigate("/admin")
     } catch (error) {
       alert("Invalid credentials");
+      console.log(error)
     }
   };
 

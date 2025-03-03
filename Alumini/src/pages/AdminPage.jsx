@@ -5,7 +5,17 @@ export default function AdminPage() {
   const [alumni, setAlumni] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/alumni").then((res) => setAlumni(res.data));
+   const fetchData = async()=>{
+    try{
+      const response = await axios.get("http://localhost:5000/api/alumni")
+      setAlumni(response.data);
+      console.log(response.data)
+    }catch(error){
+      console.log(error)
+    }
+   }
+
+   fetchData();
   }, []);
 
   return (
@@ -15,6 +25,7 @@ export default function AdminPage() {
         {alumni.map((alum, index) => (
           <li key={index} className="p-4 border-b">
             <strong>{alum.name}</strong> - {alum.department}
+            <img src={alum.profilePhoto} alt="" />
           </li>
         ))}
       </ul>
