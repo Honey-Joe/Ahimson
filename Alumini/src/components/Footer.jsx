@@ -1,13 +1,8 @@
-import React from "react";
-
-const Footer = () => {
-  return (
-    <footer className="bg-blue-900 text-white py-6">
-      <div className="container mx-auto text-center">
-        <p>&copy; 2024 St. Joseph's College Alumni Association. All rights reserved.</p>
-      </div>
-    </footer>
-  );
-};
-
-export default Footer;
+export default function Footer() {
+    return (
+      <footer className="bg-gray-800 text-white p-4 text-center">
+        <p>© 2025 Alumni Portal. All rights reserved.</p>
+      </footer>
+    );
+  }
+  
