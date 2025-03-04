@@ -38,3 +38,18 @@ exports.getAlumniList = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+
+// Get alumni by ID
+exports.getAlumniById = async (req, res) => {
+  try {
+    const alumni = await Alumni.findById(req.params.id);
+    if (!alumni) {
+      return res.status(404).json({ message: "Alumni not found" });
+    }
+    res.status(200).json(alumni);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
+};
+

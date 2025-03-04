@@ -7,6 +7,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import EventsSection from "./pages/EventSection";
 import AboutSection from "./pages/About";
+import AlumniDetails from "./pages/AlumniDetails";
+import Gallery from "./pages/Gallery";
 
 function App() {
   return (
@@ -19,6 +21,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/event" element={<EventsSection/>} />
         <Route path="/about" element={<AboutSection />} />
+        <Route path="/gallery" element={<Gallery></Gallery>} />
+
+        <Route path="/alum/:id" element={<AlumniDetails />} />
       </Routes>
       <Footer />
     </Router>

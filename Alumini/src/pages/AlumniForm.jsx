@@ -9,6 +9,8 @@ export default function AlumniForm() {
     departmentNo: "",
     name: "",
     presentPosition: "",
+    contact:"",
+    email:"",
     status: "Single",
     religion: "",
     bloodGroup: "",
@@ -122,6 +124,8 @@ export default function AlumniForm() {
           <input type="text" name="departmentNo" placeholder="Department No" value={formData.departmentNo} onChange={handleChange} className="w-full p-2 border rounded mb-2" />
           <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} className="w-full p-2 border rounded mb-2" />
           <input type="text" name="presentPosition" placeholder="Present Position" value={formData.presentPosition} onChange={handleChange} className="w-full p-2 border rounded mb-2" />
+          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} className="w-full p-2 border rounded mb-2" />
+          <input type="text" name="contact" placeholder="Contact" value={formData.contact} onChange={handleChange} className="w-full p-2 border rounded mb-2" />
 
           <label className="block mb-2">Status</label>
           <select name="status" value={formData.status} onChange={handleChange} className="w-full p-2 border rounded mb-2">

@@ -5,6 +5,8 @@ const AlumniSchema = new mongoose.Schema({
   departmentNo: { type: String, required: true },
   name: { type: String, required: true },
   presentPosition: { type: String },
+  contact:{type:String},
+  email:{type:String},
   status: { type: String, enum: ["Married", "Single", "Spinster"] },
   religion: { type: String },
   bloodGroup: { type: String },
